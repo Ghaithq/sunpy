@@ -1,13 +1,15 @@
 """
 Solar Physical Models
 ---------------------
-This module contains standard models of the Sun from various sources.
+This module contains standard models of the Sun from various sources,
+it also provides `~sunpy.sun.models.diff_rot` function which computes the
+change in longitude over days in degrees.
 
 All data is saved in `astropy.table.QTable` with an added attribute:
 
 * source : names the source of the data
 
-Object
+Objects
 ------
     interior : `astropy.table.QTable`
         The standard model of the solar interior.
@@ -26,7 +28,7 @@ from astropy.table import QTable
 
 from sunpy.sun.constants import sidereal_rotation_rate
 
-__all__ = ["interior", "evolution","diff_rot"]
+__all__ = ["interior", "evolution", "diff_rot"]
 
 
 # Radius -  R_sun
@@ -89,7 +91,6 @@ _t = {'time': _time, 'luminosity': _tluminosity, 'radius': _tradius,
 evolution = QTable(_t)
 evolution.source = 'Unknown'
 evolution.add_index('time')
-
 
 
 @u.quantity_input
